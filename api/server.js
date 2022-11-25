@@ -35,13 +35,13 @@ passport.use(
       User.findOne({ where : {email}})
         .then((user) => {
           if (!user) {
-            return done(null, false); // user not found
+            return done(null, false); 
           }
           user.hash(password, user.salt).then((hash) => {
             if (hash !== user.password) {
-              return done(null, false); // invalid password
+              return done(null, false); 
             }
-            done(null, user); // success
+            done(null, user); 
           });
         })
         .catch(done);
